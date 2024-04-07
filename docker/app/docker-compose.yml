@@ -1,0 +1,12 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres:13
+    volumes:
+      - ../initdb:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_USER=back
+      - POSTGRES_PASSWORD=back
+    ports:
+      - "5432:5432"
+    restart: always
