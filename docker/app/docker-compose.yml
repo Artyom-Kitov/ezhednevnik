@@ -1,12 +1,14 @@
 version: '3'
 services:
-  postgresql:
+  db:
     image: postgres:13
+    container_name: db
     volumes:
       - ../initdb:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_USER=back
       - POSTGRES_PASSWORD=back
+      - POSTGRES_URL=jdbc:postgresql://db:5432/backend
     ports:
       - "5432:5432"
     restart: always
