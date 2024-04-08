@@ -1,7 +1,8 @@
 version: '3'
 services:
-  postgresql:
+  db:
     image: postgres:13
+    container_name: db
     volumes:
       - ../initdb:/docker-entrypoint-initdb.d
     environment:
