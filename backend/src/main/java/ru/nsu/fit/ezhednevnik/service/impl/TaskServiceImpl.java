@@ -9,7 +9,6 @@ import ru.nsu.fit.ezhednevnik.persistence.repository.TaskRepository;
 import ru.nsu.fit.ezhednevnik.service.TaskService;
 
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
