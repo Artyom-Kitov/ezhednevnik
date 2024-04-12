@@ -17,21 +17,25 @@ public class TaskController {
 
     private final TaskService taskService;
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<List<TaskDto>> get() {
         return ResponseEntity.ok(taskService.get());
     }
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<TaskDto> create(@RequestBody TaskCreationRequestDto request) {
         return ResponseEntity.ok(taskService.create(request));
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     public ResponseEntity<TaskDto> update(@RequestBody TaskCreationRequestDto request, @PathVariable UUID id) {
         return ResponseEntity.ok(taskService.update(id, request));
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable UUID id) {
         taskService.delete(id);
