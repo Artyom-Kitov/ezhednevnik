@@ -3,6 +3,7 @@ import Task from "./Task"
 
 class Tasks extends React.Component {
   render() {
+    console.log(this.props.tasks)
     if (this.props.tasks.length > 0) {
       return (
         <div>

@@ -27,7 +27,7 @@ class App extends React.Component {
   fetchTasks() {
     axios.get(baseUrl)
       .then((res) => {
-        this.setState({ tasks: res.data.data });
+        this.setState({ tasks: res.data });
       })
       .catch((error) => {
         console.error("Ошибка при получении данных из бэкенда:", error);
@@ -35,6 +35,7 @@ class App extends React.Component {
   }
 
   addTask(task) {
+    console.log(task)
     axios.post(baseUrl, task)
       .then((res) => {
         this.fetchTasks();
