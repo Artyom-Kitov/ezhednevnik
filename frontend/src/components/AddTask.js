@@ -9,14 +9,14 @@ class AddTask extends React.Component {
       name: "",
       description: "",
       priority: "",
-      stat: "",
+      status: "",
       isFormValid: false
     };
   }
 
   updateFormValidity() {
-    const { name, priority, stat } = this.state;
-    const isValid = name !== "" && priority !== "" && stat !== "";
+    const { name, priority, status } = this.state;
+    const isValid = name !== "" && priority !== "" && status !== "";
     this.setState({ isFormValid: isValid });
   }
 
@@ -54,9 +54,9 @@ class AddTask extends React.Component {
           <option value="critical">Critical</option>
         </select>
         <select
-          value={this.state.stat}
+          value={this.state.status}
           onChange={(e) => {
-            this.setState({ stat: e.target.value }, () => this.updateFormValidity());
+            this.setState({ status: e.target.value }, () => this.updateFormValidity());
           }}
         >
           <option value="">Select Status</option>
@@ -73,7 +73,7 @@ class AddTask extends React.Component {
               name: this.state.name,
               description: this.state.description,
               priority: this.state.priority,
-              stat: this.state.stat,
+              status: this.state.status,
             };
             if (this.props.task) this.taskAdd.id = this.props.task.id;
             this.props.onAdd(this.taskAdd);
@@ -82,7 +82,7 @@ class AddTask extends React.Component {
               name: "",
               description: "",
               priority: "",
-              stat: "",
+              status: "",
               isFormValid: false
             }); 
           }}

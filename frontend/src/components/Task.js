@@ -23,7 +23,7 @@ class Task extends React.Component {
             editTask: !this.state.editTask
           })
         }} className="edit-icon"/> 
-        <h3>Task {this.task.id}) {this.task.name}: {this.task.stat}</h3>
+        <h3>Task {this.task.id}) {this.task.name}: {this.task.status}</h3>
         <p>{this.task.description}</p>
 
 
