@@ -9,14 +9,15 @@ class AddTask extends React.Component {
       name: "",
       description: "",
       priority: "",
-      stat: "",
+      status: "",
+      deadline: null,
       isFormValid: false
     };
   }
 
   updateFormValidity() {
-    const { name, priority, stat } = this.state;
-    const isValid = name !== "" && priority !== "" && stat !== "";
+    const { name, priority, status, deadline } = this.state;
+    const isValid = name !== "" && priority !== "" && status !== "" && deadline !== null;
     this.setState({ isFormValid: isValid });
   }
 
@@ -54,9 +55,9 @@ class AddTask extends React.Component {
           <option value="critical">Critical</option>
         </select>
         <select
-          value={this.state.stat}
+          value={this.state.status}
           onChange={(e) => {
-            this.setState({ stat: e.target.value }, () => this.updateFormValidity());
+            this.setState({ status: e.target.value }, () => this.updateFormValidity());
           }}
         >
           <option value="">Select Status</option>
@@ -64,6 +65,19 @@ class AddTask extends React.Component {
           <option value="in progress">In Progress</option>
           <option value="done">Done</option>
         </select>
+
+        <h3>Deadline</h3> 
+
+        <input
+          type="date"
+          value={this.state.deadline}
+          onChange={(e) => {
+            console.log(e.target.value)
+            this.setState({ deadline: e.target.value }, () => this.updateFormValidity());
+          }}
+        />
+
+
         <button
           type="button"
           style={{ backgroundColor: isFormValid ? "#00b126" : "#140" }}
@@ -73,7 +87,8 @@ class AddTask extends React.Component {
               name: this.state.name,
               description: this.state.description,
               priority: this.state.priority,
-              stat: this.state.stat,
+              status: this.state.status,
+              deadline: this.state.deadline
             };
             if (this.props.task) this.taskAdd.id = this.props.task.id;
             this.props.onAdd(this.taskAdd);
@@ -82,7 +97,8 @@ class AddTask extends React.Component {
               name: "",
               description: "",
               priority: "",
-              stat: "",
+              status: "",
+              deadline: null,
               isFormValid: false
             }); 
           }}

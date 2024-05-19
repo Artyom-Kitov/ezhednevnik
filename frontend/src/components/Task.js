@@ -23,7 +23,7 @@ class Task extends React.Component {
             editTask: !this.state.editTask
           })
         }} className="edit-icon"/> 
-        <h3>Task {this.task.id}) {this.task.name}: {this.task.stat}</h3>
+        <h3>{this.task.name}: {this.task.status}</h3>
         <p>{this.task.description}</p>
 
 
@@ -34,6 +34,8 @@ class Task extends React.Component {
             <b>Не особо важно: {this.task.priority}</b>
           )
         }
+
+        <h3>Deadline: {this.task.deadline}</h3>
 
         {this.state.editTask && <AddTask task={this.task} onAdd={this.props.onEdit} />}
 
