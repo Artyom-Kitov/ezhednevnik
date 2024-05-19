@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "2e01e3a2-324e-4ea0-93c9-76a2baad7bf1",
+		"name": "EZHEDNEVNIK",
+		"description": "**API для проекта ЕЖЕДНЕВНИК.**\n\nНекоторые пояснения насчёт полей:\n\n- Поле id является внутренним в БД, его на UI показывать и давать изменять не надо.\n- Имя задачи может быть не уникально.\n- Описание это описание, думаю, тут нечего пояснять.\n- У приоритета 4 возможных значения: \"low\", \"medium\", \"high\", \"critical\". Ничего другого не допускается.\n- У статуса 3 возможных значения: \"to do\", \"in progress\", \"done\". Ничего другого не допускается.\n- Время создания не нужно указывать явно при создании таски, оно будет генерироваться на бэке.\n- Дедлайн это либо строка в формате yyyy-mm-dd (в JS легко создаётся и парсится, в java это будет Instant), либо null. В остальных полях null не допускается.\n    \n\nТо, что там ниже указан какой-то localhost с портом 8080, пока забейте. Примеры ниже в формате JavaScript - Fetch, чтоб Тоха мозги себе случайно не сломал потом. Можете руками поменять, там сверху выбрать можно.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28477576"
+	},
+	"item": [
+		{
+			"name": "Получить все задачи",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{backend-host}}/tasks",
+					"host": [
+						"{{backend-host}}"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "Тупо запрос на получение всех задач. Никаких параметров, никакого тела (в GET запросах нет тела, даже не надейтесь). Что возвращает? См. пример."
+			},
+			"response": [
+				{
+					"name": "successful",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[\r\n    {\r\n        \"id\": \"goga-228-1337\",\r\n        \"name\": \"Зафигачить ЕЖЕДНЕВНИК\",\r\n        \"description\": \"Чё тут непонятного? Надо срочно сделать ЕЖЕДНЕВНИК!!!!!! Иначе нас всех ОТЧИСЛЯТ НАХРЕН!!!!!(!)11\",\r\n        \"priority\": \"critical\",\r\n        \"status\": \"in progress\",\r\n        \"createdAt\": \"2024-04-01T21:00:00.817Z\",\r\n        \"deadline\": \"2024-04-07\"\r\n    },\r\n    {\r\n        \"id\": \"123abc\",\r\n        \"name\": \"Сделать фронт\",\r\n        \"description\": \"Тоха, сделай красивый фронт с трясущимся фоном\",\r\n        \"priority\": \"high\",\r\n        \"status\": \"to do\",\r\n        \"createdAt\": \"2024-04-01T21:00:00.817Z\",\r\n        \"deadline\": \"2024-04-07\"\r\n    },\r\n    {\r\n        \"id\": \"129837sldjaf\",\r\n        \"name\": \"Сделать Бэк\",\r\n        \"description\": \"Мих, сделай бэк пж\",\r\n        \"priority\": \"medium\",\r\n        \"status\": \"done\",\r\n        \"createdAt\": \"2024-04-01T21:00:00.817Z\",\r\n        \"deadline\": \"2024-04-07\"\r\n    },\r\n    {\r\n        \"id\": \"idididid\",\r\n        \"name\": \"Тесты\",\r\n        \"description\": \"Сделайте грёбаные тесты\",\r\n        \"priority\": \"low\",\r\n        \"status\": \"in progress\",\r\n        \"createdAt\": \"2024-04-01T21:00:00.817Z\",\r\n        \"deadline\": \"2024-04-07\"\r\n    }\r\n]"
+				}
+			]
+		},
+		{
+			"name": "Создать задачу",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Сделать ежедневник\",\r\n    \"description\": \"Сделать ежедневник, чё не понятного-то???\",\r\n    \"priority\": \"critical\",\r\n    \"status\": \"to do\",\r\n    \"deadline\": \"2024-04-07\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{backend-host}}/tasks",
+					"host": [
+						"{{backend-host}}"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "Ниже описано тело запроса. Результат - параметры созданной таски (+ ещё id)."
+			},
+			"response": [
+				{
+					"name": "successful",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Сделать ежедневник\",\r\n    \"description\": \"Сделать ежедневник, чё не понятного-то???\",\r\n    \"priority\": \"critical\",\r\n    \"status\": \"to do\",\r\n    \"deadline\": \"2024-04-07\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"228-1337\",\n    \"name\": \"Сделать ежедневник\",\n    \"description\": \"Сделать ежедневник, чё не понятного-то???\",\n    \"priority\": \"critical\",\n    \"status\": \"to do\",\n    \"deadline\": \"2024-04-07\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Редактировать задачу",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Не делать ежедневник\",\r\n    \"description\": \"Отбой, ежедневник не делаем, отчисляемся дружно всей командой.\",\r\n    \"priority\": \"low\",\r\n    \"status\": \"done\",\r\n    \"deadline\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{backend-host}}/tasks/228-1337",
+					"host": [
+						"{{backend-host}}"
+					],
+					"path": [
+						"tasks",
+						"228-1337"
+					]
+				},
+				"description": "PATH запроса: /tasks/{id}. ID каждой задачи выдаётся в GET запросе, просто нужно сохранить где-то их все. В теле просто передаём обновлённые параметры задачи. Если параметр не поменялся, просто не мучаемся и передаём то же самое значение. Тело ответа - обновлённые данные задачи."
+			},
+			"response": [
+				{
+					"name": "successful",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Не делать ежедневник\",\r\n    \"description\": \"Отбой, ежедневник не делаем, отчисляемся дружно всей командой.\",\r\n    \"priority\": \"low\",\r\n    \"status\": \"done\",\r\n    \"deadline\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tasks/228-1337",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks",
+								"228-1337"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"id\": \"228-1337\",\r\n    \"name\": \"Не делать ежедневник\",\r\n    \"description\": \"Отбой, ежедневник не делаем, отчисляемся дружно всей командой.\",\r\n    \"priority\": \"low\",\r\n    \"status\": \"done\",\r\n    \"deadline\": null\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Удалить задачу",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{backend-host}}/tasks/228-1337",
+					"host": [
+						"{{backend-host}}"
+					],
+					"path": [
+						"tasks",
+						"228-1337"
+					]
+				},
+				"description": "PATH запроса: /tasks/{id}. Собственно, этот метод делает ровно то, что написано: удаляет задачу. Ни параметров, ни тела нету. На ответ можно вообще не смотреть. Если вернуло 200 - OK, то всё зашибенно, если нет, то что-то пошло не так."
+			},
+			"response": [
+				{
+					"name": "successful",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tasks/228-1337",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks",
+								"228-1337"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "backend-host",
+			"value": "http://localhost:8080"
+		}
+	]
+}
